@@ -3,11 +3,10 @@ import pandas as pd
 import pickle
 import re
 
-from src.preprocess import preprocess_applicants, clean_text
 from src.data_loader import load_all
+from src.preprocess import preprocess_applicants, clean_text
 from src.feature_engineering import extract_skills, vectorize_resumes, job_applicant_matrix
 from src.model import train_model
-
 
 def main():
     st.title("Recomendador de Candidatos")
