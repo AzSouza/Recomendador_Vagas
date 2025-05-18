@@ -57,7 +57,7 @@ def main():
         applicants_df = preparar_applicants(data['applicants'])
 
         if st.sidebar.checkbox("Modo rápido (limita a 100 candidatos)", value=True):
-        applicants_df = applicants_df.head(100)
+            applicants_df = applicants_df.head(100)
 
 
         escolha = st.sidebar.selectbox(
