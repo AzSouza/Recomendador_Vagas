@@ -12,9 +12,15 @@ from src.model import train_model
 def carregar_dados():
     return load_all('data')
 
+
 @st.cache_data
 def preparar_applicants(applicants_raw):
-    return preprocess_applicants(applicants_raw)
+    pt = applicants_raw['cv_pt'].fillna('')
+    en = applicants_raw['cv_en'].fillna('')
+    applicants_raw['raw_cv'] = pt.where(pt.str.strip() != '', en)
+    applicants_raw['resume_clean'] = applicants_raw['raw_cv'].apply(clean_text)
+    return applicants_raw
+
 
 @st.cache_data
 def preparar_vagas(vagas_raw):
@@ -50,8 +56,9 @@ def main():
         vagas_df = preparar_vagas(data['vagas'])
         applicants_df = preparar_applicants(data['applicants'])
 
-        if st.sidebar.checkbox("Modo Apresentação (limita a 150 candidatos)", value =True):
-            applicants_df = applicants_df.head(150)
+        if st.sidebar.checkbox("Modo rápido (limita a 100 candidatos)", value=True):
+        applicants_df = applicants_df.head(100)
+
 
         escolha = st.sidebar.selectbox(
         "Escolha a vaga", sorted(vagas_df['titulo_limpo'].unique())
