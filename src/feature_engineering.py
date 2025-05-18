@@ -6,7 +6,7 @@ def extract_skills(df, skill_list):
         df[f'skill_{skill}'] = df['resume_clean'].apply(lambda txt: int(skill in txt))
     return df
 
-def vectorize_resumes(df, max_features=5000):
+def vectorize_resumes(df, max_features=800):
     tfidf = TfidfVectorizer(max_features=max_features)
     X = tfidf.fit_transform(df['resume_clean'])
     return X, tfidf
