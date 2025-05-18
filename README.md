@@ -79,7 +79,7 @@ project_root/
 ### Interface Streamlit
 
 ```bash
-cd "C:\Trabalhos\Phase_5_Fiap\P-s-Tech\fase 5"
+
 streamlit run src/app.py
 
 ```
