@@ -50,8 +50,8 @@ def main():
         vagas_df = preparar_vagas(data['vagas'])
         applicants_df = preparar_applicants(data['applicants'])
 
-        if st.sidebar.checkbox("Modo Apresentação (limita a 250 candidatos)", value =True):
-            applicants_df = applicants_df.head(250)
+        if st.sidebar.checkbox("Modo Apresentação (limita a 150 candidatos)", value =True):
+            applicants_df = applicants_df.head(150)
 
         escolha = st.sidebar.selectbox(
         "Escolha a vaga", sorted(vagas_df['titulo_limpo'].unique())
