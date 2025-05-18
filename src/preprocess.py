@@ -2,6 +2,10 @@ import re
 import pandas as pd
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
+import nltk
+nltk.download('stopwords', quiet=True)
+nltk.download('wordnet', quiet=True)
+
 
 STOP = set(stopwords.words('portuguese'))
 LEMMA = WordNetLemmatizer()
